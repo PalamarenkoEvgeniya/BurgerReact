@@ -5,6 +5,7 @@
 .container {
   padding: 0;
   min-width: 100vw;
+  margin: 0 auto;
 }
 
 .list {
