@@ -25,9 +25,9 @@ export const Catalog = () => {
 
           <div className={style.wrap_list}>
             <ul className={style.list}>
-              {goodsList.map(item => (
-                <li className={style.item}>
-                  <CatalogProduct title = {item.title}/>
+              {goodsList.map((item, i) => (
+                <li key={1} className={style.item}>
+                  <CatalogProduct title={item.title} />
                 </li>
               ))}
 
