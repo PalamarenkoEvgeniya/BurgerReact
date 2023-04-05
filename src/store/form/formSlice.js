@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, isRejectedWithValue } from '@reduxjs/toolkit';
 import { closeModal } from '../modalDelivery/modalDeliverySlice';
 import { clearOrder } from '../order/orderSlice';
 
@@ -22,26 +22,26 @@ export const submitForm = createAsyncThunk(
         {
           method: 'POST',
           headers: {
-            'Content-Type': application / json
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(data),
         }
-      )
+      );
 
       if (!response.ok) {
-        throw new Error(`Ошибка: ${response.statusText}`);
-      }
+        throw new Error(`Ошибка: ${response.statusText}`)
+      };
 
       dispatch(clearOrder());
       dispatch(closeModal());
-      
-      return await response.json()
+
+      return await response.json();
 
     } catch (err) {
-      return rejectWithValue(err.message)
+      return rejectWithValue(err.message);
     }
   }
-)
+);
 
 const formSlice = createSlice({
   name: 'form',

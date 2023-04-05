@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   products: [],
+  flagProduct: false,
   error: '',
 };
 
@@ -20,10 +21,12 @@ const productSlice = createSlice({
     builder
       .addCase(productRequestAsync.pending, state => {
         state.error = '';
+        state.flagProduct = false;
       })
       .addCase(productRequestAsync.fulfilled, (state, action) => {
         state.error = '';
         state.products = action.payload;
+        state.flagProduct = true;
       })
       .addCase(productRequestAsync.rejected, (state, action) => {
         state.error = action.payload.error
